@@ -1,0 +1,43 @@
+﻿@model AppLogin.ViewModels.LoginVM
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ingreso</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <section>
+        <div class="row mt-5 justify-content-center">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        Iniciar Sesion
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Acceso" asp-action="Login" method="post">
+                            <input class="form-control mb-3" type="text" placeholder="Correo" asp-for="Correo" />
+                            <input class="form-control mb-3" type="password" placeholder="Contraseña" asp-for="Clave" />
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-primary" type="submit">Ingresar</button>
+                            </div>
+
+                            @if (ViewData["Mensaje"] != null)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @ViewData["Mensaje"]
+                                </div>
+                            }
+                            ¿No estas registrado? <a asp-controller="Acceso" asp-action="Registrarse">Registrate</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
